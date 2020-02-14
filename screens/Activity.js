@@ -1,7 +1,8 @@
 import React from 'react';
-import React from "react"
+
 import { Text, View, Button } from 'react-native';
-import styles from "../styles"
+
+import { Ionicons } from '@expo/vector-icons';
 
 
 export const  Activity = () =>  {

@@ -18,11 +18,24 @@
 
 import * as React from 'react';
 import { TabNavugator} from "./navigation /TabNavigator"
+import { firstReducer } from "./reducers/index"
+import { createStore, combineReducers} from "redux"
+import { Provider } from "react-redux"
+import { useDispatch } from 'react-redux/lib/hooks/useDispatch';
+
+
+const rootReducer = combineReducers({
+  firstReducer:firstReducer
+})
+
+const store = createStore(rootReducer)
 
 
 export default function App() {
   return (
-    <TabNavugator />
+    <Provider store={store}>
+      <TabNavugator />
+    </Provider>
   );
 }
 

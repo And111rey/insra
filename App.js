@@ -1,40 +1,38 @@
-// import React from 'react';
-// import { StyleSheet, Text, View, Button } from 'react-native';
-// // import styles from "./styles"
 
-// import TabNavagator from "./navgation/TabNavigator" 
-
-
-// export default function App() {
-//   return (
-//     <View style={styles.container}>
-//       {/* <TabNavagator></TabNavagator> */}
-//       <Text>Navigation here</Text>
-//     </View>
-//   );
-// }
 
 
 
 import * as React from 'react';
-import { TabNavugator} from "./navigation /TabNavigator"
+// import { TabNavigator} from "./navigation/TabNavigator"
+
+
+// ------------------REDUCERS LIST---------------------------//
 import { firstReducer } from "./reducers/index"
-import { createStore, combineReducers} from "redux"
+import { user } from "./reducers/index"
+
+//----------------------------------------------------------//
+
+import { createStore, combineReducers, applyMiddleware} from "redux"
 import { Provider } from "react-redux"
-import { useDispatch } from 'react-redux/lib/hooks/useDispatch';
+import thunk from 'redux-thunk';
+import logger from "redux-logger"
+// import { SwitchNavigator } from "./navigation/SwitchNavigator"
+import SwitchNavigator from "./navigation /SwitchNavigator"
 
 
 const rootReducer = combineReducers({
-  firstReducer:firstReducer
+  firstReducer:firstReducer,
+  user: user
 })
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, applyMiddleware(thunk, logger))
 
 
 export default function App() {
   return (
     <Provider store={store}>
-      <TabNavugator />
+      {/* <TabNavigator /> */}
+      <SwitchNavigator />
     </Provider>
   );
 }

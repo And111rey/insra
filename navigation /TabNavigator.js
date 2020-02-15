@@ -3,7 +3,6 @@ import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { MaterialCommunityIcons } from 'react-native-vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 
 import { Home } from "../screens/Home"
@@ -18,7 +17,7 @@ import { Activity } from "../screens/Activity"
  
 const Tab = createBottomTabNavigator();
 
-export const   TabNavugator = () => {
+export const TabNavigator = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator>

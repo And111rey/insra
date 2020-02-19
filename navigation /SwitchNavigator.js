@@ -7,11 +7,10 @@ import { Ionicons } from '@expo/vector-icons';
 
 import { TabNavigator } from "./TabNavigator"
 import { AuthNavigator } from "./AuthNavigator"
-import { Home } from '../screens/Home';
 
 
 const SwitchNavigator = createSwitchNavigator({
-  Home: {
+  HomeStack: {
     screen:TabNavigator
   },
   Auth: {

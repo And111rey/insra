@@ -23,9 +23,10 @@ export const Login = ({navigation}) =>  {
         <Text>Login</Text>
         <TextInput value={emaiFromRducer} onChangeText={input => dispatch(updateEmail(input))}  placeholder="Email"/>
         <TextInput value ={passFromRducer} onChangeText={input => dispatch(updatePass(input))}  placeholder="Password"/>
-        <Button style={styles.button} title="Go to SignUp" onPress={()=>navigation.navigate("SignUp")}/>
+        <Button style={styles.button} title="Go to SignUp" onPress={()=>navigation.navigate("HomeStack")}/>
+        
         <TouchableOpacity  style={styles.button} onPress={()=>navigation.navigate("SignUp")} >
-
+            <Text>Go to SignUp</Text>
         </TouchableOpacity>
       </View>
     </TouchableWithoutFeedback>

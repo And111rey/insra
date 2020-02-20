@@ -1,6 +1,6 @@
 
 
-import React, {useState} from 'react';
+import React, {useState}  from 'react';
 import { useSelector, useDispatch } from "react-redux"
 import { Text, View, Button, TextInput, TouchableWithoutFeedback, TouchableOpacity , Keyboard } from 'react-native';
 import styles from "../styles"
@@ -20,11 +20,15 @@ export const Login = ({navigation}) =>  {
   return (
     <TouchableWithoutFeedback onPress={()=>{Keyboard.dismiss()}}>
       <View Keyboard style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Login</Text>
-        <TextInput value={emaiFromRducer} onChangeText={input => dispatch(updateEmail(input))}  placeholder="Email"/>
-        <TextInput value ={passFromRducer} onChangeText={input => dispatch(updatePass(input))}  placeholder="Password"/>
-        <Button style={styles.button} title="Go to SignUp" onPress={()=>navigation.navigate("HomeStack")}/>
-        
+        <TextInput style={styles.border} value={emaiFromRducer} onChangeText={input => dispatch(updateEmail(input))}  placeholder="Email"/>
+        <TextInput style={styles.border} value ={passFromRducer} onChangeText={input => dispatch(updatePass(input))}  placeholder="Password"/>
+       
+        {/* <Button style={styles.button} title="Go to SignUp" onPress={()=>navigation.navigate("HomeStack")}/> */}
+        <TouchableOpacity  style={styles.button} onPress={()=>navigation.navigate("HomeStack")} >
+            <Text>XXXXX</Text>
+        </TouchableOpacity>
+
+
         <TouchableOpacity  style={styles.button} onPress={()=>navigation.navigate("SignUp")} >
             <Text>Go to SignUp</Text>
         </TouchableOpacity>

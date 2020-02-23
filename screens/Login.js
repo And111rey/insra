@@ -1,34 +1,40 @@
 
 
-import React, {useState}  from 'react';
+import React  from 'react';
 import { useSelector, useDispatch } from "react-redux"
 import { Text, View, Button, TextInput, TouchableWithoutFeedback, TouchableOpacity , Keyboard } from 'react-native';
 import styles from "../styles"
 
-import { updateEmail } from "../reducers/actionst/user"
-import { updatePass } from "../reducers/actionst/user"
+import { updateEmail, updatePass, loginActionCreator, signup } from "../reducers/actionst/user"
+import firebase from "firebase"
 
 
 export const Login = ({navigation}) =>  {
-  const emaiFromRducer = useSelector(state => state.user)
-  const passFromRducer = useSelector(state => state.pass)
+  const emaiFromRducer = useSelector(state => state.user.email)
+  const passFromRducer = useSelector(state => state.user.password)
   const dispatch = useDispatch()
+  console.log( emaiFromRducer ,"....", passFromRducer)
+  
+const login  = () => {
+  // console.log('///////', emaiFromRducer)
+  // if (emaiFromRducer.email) {
+  //   navigation.navigate("HomeStack")
+  // }
+  dispatch(loginActionCreator(emaiFromRducer, passFromRducer))
+}
 
-
-  /// выводит проблему иза того до "value={emaiFromRducer}" не приходит до того как редюсер сработает  
 
   return (
     <TouchableWithoutFeedback onPress={()=>{Keyboard.dismiss()}}>
       <View Keyboard style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <TextInput style={styles.border} value={emaiFromRducer} onChangeText={input => dispatch(updateEmail(input))}  placeholder="Email"/>
-        <TextInput style={styles.border} value ={passFromRducer} onChangeText={input => dispatch(updatePass(input))}  placeholder="Password"/>
+        <TextInput style={styles.border} secureTextEntry={true} value ={passFromRducer} onChangeText={input => dispatch(updatePass(input))}  placeholder="Password"/>
        
-        {/* <Button style={styles.button} title="Go to SignUp" onPress={()=>navigation.navigate("HomeStack")}/> */}
-        <TouchableOpacity  style={styles.button} onPress={()=>navigation.navigate("HomeStack")} >
-            <Text>XXXXX</Text>
+        <TouchableOpacity  style={styles.button} onPress={login} >
+            <Text>Login</Text>
         </TouchableOpacity>
 
-
+        <Text>or</Text>
         <TouchableOpacity  style={styles.button} onPress={()=>navigation.navigate("SignUp")} >
             <Text>Go to SignUp</Text>
         </TouchableOpacity>

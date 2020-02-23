@@ -15,9 +15,10 @@ import { user } from "./reducers/index"
 import { createStore, combineReducers, applyMiddleware} from "redux"
 import { Provider } from "react-redux"
 import thunk from 'redux-thunk';
-import logger from "redux-logger"
+// import logger from "redux-logger"
 // import { SwitchNavigator } from "./navigation/SwitchNavigator"
 import SwitchNavigator from "./navigation /SwitchNavigator"
+import firebase from "./config/firebase"
 
 
 const rootReducer = combineReducers({
@@ -25,7 +26,7 @@ const rootReducer = combineReducers({
   user: user
 })
 
-const store = createStore(rootReducer, applyMiddleware(thunk, logger))
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 
 export default function App() {

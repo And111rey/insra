@@ -31,10 +31,10 @@ export const updateBio = (bio) => {
 }
 
 export const loginActionCreator = (email, password) => {
-    return  (dispatch) => {
+    return  async (dispatch) => {
        try{
-        const response = firebase.auth().createUserWithEmailAndPassword(email, password) 
-        console.log("RESPONS  ", response)
+        const response = await firebase.auth().createUserWithEmailAndPassword(email, password) 
+        console.log("------RESPONS  ", response)
 
         // firebase.auth().signInWithEmailAndPassword(email, password)
         // .then(() => console.log("LOGON SuCCESS"))

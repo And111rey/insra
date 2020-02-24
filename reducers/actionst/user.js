@@ -33,7 +33,7 @@ export const updateBio = (bio) => {
 export const loginActionCreator = (email, password) => {
     return  async (dispatch) => {
        try{
-        const response = await firebase.auth().createUserWithEmailAndPassword(email, password) 
+        const response = await firebase.auth().signInWithEmailAndPassword(email, password) 
         console.log("------RESPONS  ", response)
 
         // firebase.auth().signInWithEmailAndPassword(email, password)
@@ -41,7 +41,7 @@ export const loginActionCreator = (email, password) => {
         // .catch(function(error) {
         //     alert(error)
         //   })
-        dispatch({type: "UPDATE_BIO",payload: "bio"})
+        dispatch({type: "LOGIN",payload: response.user})
        }catch(e){
            alert(e)
        }
@@ -49,10 +49,30 @@ export const loginActionCreator = (email, password) => {
     }
 }
 
-export const signup = (email, password) => {
-    return () => {
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-            alert(error)
-          });
+export const signupActionCreator = ({email, password}) => {
+    return  async (dispatch) => {
+       try{
+        const response = await firebase.auth().createUserWithEmailAndPassword(email, password) 
+        console.log("------RESPONS --at-- signUp  ", response)
+        dispatch({type: "SIGNUP",payload: response.user})
+       }catch(e){
+           alert(e)
+       }
     }
 }
+
+
+
+
+///  will make changes in  "loginActionCreator"
+// to continue lesson 21
+
+// export const signupActionCreator = (email, password) => {
+//     return () => {
+//         firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+//             alert(error)
+//           });
+//     }
+// }
+
+

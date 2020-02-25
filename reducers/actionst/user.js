@@ -34,7 +34,7 @@ export const loginActionCreator = (email, password) => {
     return  async (dispatch) => {
        try{
         const response = await firebase.auth().signInWithEmailAndPassword(email, password) 
-        console.log("------RESPONS  ", response)
+        // console.log("------RESPONS  ", response)
 
         // firebase.auth().signInWithEmailAndPassword(email, password)
         // .then(() => console.log("LOGON SuCCESS"))
@@ -53,7 +53,7 @@ export const signupActionCreator = ({email, password}) => {
     return  async (dispatch) => {
        try{
         const response = await firebase.auth().createUserWithEmailAndPassword(email, password) 
-        console.log("------RESPONS --at-- signUp  ", response)
+        // console.log("------RESPONS --at-- signUp  ", response)
         dispatch({type: "SIGNUP",payload: response.user})
        }catch(e){
            alert(e)

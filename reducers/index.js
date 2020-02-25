@@ -16,7 +16,7 @@
   export const  user = (state = {}, action) => {
     switch (action.type) {
       case 'LOGIN':
-        console.log("***LOGID fro, server***", action.payload)
+        // console.log("***LOGID fro, server***", action.payload)
         return {...state, email: action.payload}
       case 'SIGNUP':
         console.log("*SIGNUP*", action.payload)

@@ -1,6 +1,6 @@
 
 
-import React  from 'react';
+import React, { useEffect }  from 'react';
 import { useSelector, useDispatch } from "react-redux"
 import { Text, View, Button, TextInput, TouchableWithoutFeedback, TouchableOpacity , Keyboard } from 'react-native';
 import styles from "../styles"
@@ -10,17 +10,33 @@ import firebase from "firebase"
 
 
 export const Login = ({ navigation }) => {
+
+
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged(user => {
+            console.log("U-S-E-R ", user)
+            if(user){
+                navigation.navigate("HomeStack")
+            }
+        })
+    }, [])
+
+    // console.log("what has  fire base...", firebase)
+
+    
     const emaiFromRducer = useSelector(state => state.user.email);
     const passFromRducer = useSelector(state => state.user.password);
     const dispatch = useDispatch();
-    console.log(emaiFromRducer, "....", passFromRducer);
+
+
 
     const login = () => {
         // console.log('///////', emaiFromRducer)
         // if (emaiFromRducer.email) {
         //   navigation.navigate("HomeStack")
         // }
-        dispatch(loginActionCreator(emaiFromRducer, passFromRducer));
+        dispatch(loginActionCreator(emaiFromRducer, passFromRducer))
+            
     };
 
     return (

@@ -1,5 +1,10 @@
 
 import firebase from "firebase" 
+// import db from "../../config/db"
+import db from "../../config/firebase"
+
+
+
 
 export const updateEmail = (email) => {
     return {
@@ -49,12 +54,25 @@ export const loginActionCreator = (email, password) => {
     }
 }
 
-export const signupActionCreator = ({email, password}) => {
+export const signupActionCreator = ({email, password, userName, bio}) => {
     return  async (dispatch) => {
        try{
         const response = await firebase.auth().createUserWithEmailAndPassword(email, password) 
-        // console.log("------RESPONS --at-- signUp  ", response)
         dispatch({type: "SIGNUP",payload: response.user})
+        if(response.user.id) {
+            const user = {
+                uid: response.user,
+                email: email,
+                userName: userName,
+                bio: bio,
+                photo: '',
+                token: null
+            }
+            db.firestore().colection("users").doc(response.user.uid).set(user)
+            dispatch({type: "SIGNUP", payload: response.user})
+        }
+  
+        
        }catch(e){
            alert(e)
        }

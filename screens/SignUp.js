@@ -23,7 +23,7 @@ export const SignUp = ({ navigation }) =>  {
 //       console.log("...data for signUp....  ", signData)
 //   }
   const signUpHendler = () => {
-      console.log('+++++  ', signData)
+    //   console.log('+++++  ', signData)
       dispatch(signupActionCreator(signData))
     //   navigation.navigate("HomeStack")
 

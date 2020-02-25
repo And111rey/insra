@@ -1,5 +1,6 @@
 
 import firebase from "firebase"
+require('firebase/firestore')
 
 
   const firebaseConfig = {
@@ -12,8 +13,14 @@ import firebase from "firebase"
     appId: "1:844669244708:web:d8200dcaeaac38f14b4fb1",
     measurementId: "G-ZKSD3B91FP"
   };
-  // Initialize Firebase
   const initialize = firebase.initializeApp(firebaseConfig);
-export default initialize
 
-  //   firebase.analytics();
+  
+  const db = firebase.firestore()
+
+// db.settings({
+//   timestampsInSnapshots: true
+// })
+
+  export default db
+  
